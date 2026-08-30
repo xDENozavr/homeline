@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>HomeLine</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'homeline/css/base.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+       <nav class="navbar">
+          <div class="container">
+             <div class="logo">
+                <a href="{% url 'home' %}">
+                   <img src="{% static 'homeline/media/HomeLine_blue.jpg' %}" alt="HomeLine logo" height="80" loading="lazy">
+                </a>
+             </div>
+
+                <div class="navbar-wrap">
+                   <ul class="navbar-menu">
+                      <li>
+                         <a href="{% url 'home' %}">Apartments</a>
+                      </li>
+                      <li>
+                         <a href="{% url 'analytics' %}">Analytics</a>
+                      </li>
+                      <li>
+                         <a href="{% url 'faq' %}">FAQ</a>
+                      </li>
+                   </ul>
+                </div>
+
+                <div class="navbar-settings">
+                   {% if user.is_authenticated %}
+                         <div class="user-profile-icon">
+                            <span>{{ user.username }}</span>
+                            <img src="{% static 'homeline/media/account_icon.jpg' %}" alt="" width="30">
+                         </div>
+                   {% endif %}
+
+                   <ul class='navbar-user'>
+                      <li class='user_menu_control'>
+                         <button class="auth" type="button" aria-label="Profile menu" title="Menu">
+                            <img src="{% static 'homeline/media/Hamburger_icon.png' %}" alt="Menu" loading="lazy" height="30" width="30">
+                            <img src="{% static 'homeline/media/profile-icon.png' %}" alt="Profile" loading="lazy" height="30" width="30">
+                         </button>
+                         <div class="overlay"></div>
+                         <div class="dropdown">
+                            <ul>
+                               <li class='invisible'>
+                                  <a href="{% url 'home' %}">Apartments</a>
+                               </li>
+                               <li class='invisible'>
+                                  <a href="{% url 'about' %}">About us</a>
+                               </li>
+                               <li class='invisible'>
+											<a href="{% url 'faq' %}">FAQ</a>
+										</li>
+										{% if user.is_authenticated %}
+											<li>
+												<a href="{% url 'users:profile' %}" style="font-size: 17px">Profile</a>
+											</li>
+											<li>
+												<a href="{% url 'favorites_list' %}" style="font-size: 17px">Favorites</a>
+											</li>
+											<li>
+												<form method="post" action="{% url 'users:logout' %}">
+													{% csrf_token %}
+													<button class="but-out" type="submit">Log out</button>
+												</form>
+											</li>
+										{% else %}
+											<li>
+												<a href="{% url 'users:login' %}">Log in</a>
+											</li>
+											<li>
+												<a href="{% url 'users:registration' %}">Sign up</a>
+											</li>
+										{% endif %}
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+			</div>
+		</nav>
+	</header>
+
+
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+
+
+    <footer>
+		<div class="site_footer">
+			<div class="footer_text">
+				<div class="about">
+					<div class="company_faq">
+						<h3>About us</h3>
+						<ul>
+							<li><a href="{% url 'about' %}">Who we are</a></li>
+							<li><a href="{% url 'terms' %}">Terms of use</a></li>
+						</ul>
+					</div>
+
+					<div class="company_faq">
+						<h3>Contacts:</h3>
+						<address>
+							<ul>
+								<li>
+									Phone: <a href="tel:+380987654321">0987654321</a>
+								</li>
+								<li>
+									Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vlasov.den03@gmail.com" target="_blank">vlasov.den03@gmail.com</a>
+								</li>
+								<li>Address: Mannheim</li>
+							</ul>
+						</address>
+					</div>
+				</div>
+
+				<div class="social">
+					<h3>Follow us:</h3>
+					<ul>
+						<li>
+							<a href="https://www.instagram.com/" target="_blank" aria-label="instagram">
+								<img src="{% static 'homeline/media/inst_icon.png' %}" alt="Instagram" height="35" width="35" loading="lazy">
+							</a>
+						</li>
+						<li>
+							<a href="https://www.facebook.com/login/" target="_blank" aria-label="facebook">
+								<img src="{% static 'homeline/media/facebook_icon.png' %}" alt="Facebook" height="35" width="35" loading="lazy">
+							</a>
+						</li>
+						<li>
+							<a href="https://x.com/" target="_blank" aria-label="twitter">
+								<img src="{% static 'homeline/media/twitter_icon.png' %}" alt="Twitter" height="35" width="35" loading="lazy">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="rights">
+				<span class="span_rignts">&#169; HomeLine 2025. All rights reserved.</span>
+			</div>
+		</div>
+	</footer>
+
+	{% block modals %}{% endblock %}
+	{% block scripts %}{% endblock %}
+</body>
+</html>

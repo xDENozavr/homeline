@@ -1,0 +1,48 @@
+{% extends 'homeline/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link type="text/css" rel="stylesheet" href="{% static 'announcements/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'announcements/css/favorites.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="favorites-section">
+       <section class="favorites-header">
+             <h1>Favorite Listings</h1>
+             <p>Here are the apartments you've added to your favorites. Browse, compare, and choose the best one!</p>
+       </section>
+
+       <section class="favorites-list">
+    {% if favorites %}
+      {% for fav in favorites %}
+        {% with an=fav.announcement %}
+          <div class="favorite-card">
+              <a href="{% url 'announcement' an.id %}" class="fav-img">
+                  <img src="{{ an.images.0 }}" alt="{{ an.announcement_title }}" loading="lazy">
+              </a>
+              <div class="card-info">
+                  <h2>{{ an.announcement_title }}</h2>
+                  <p>Price: {{ an.price }} $ • District: {{ an.district }}</p>
+                  <p>Floor: {{ an.floor }} • Area: {{ an.meters }} m²</p>
+                  <div class="card-actions">
+                      <a href="{% url 'announcement' an.id %}" class="btn view-btn">View</a>
+                      <button class="btn remove-btn fav-but" type="button" data-an-id="{{ an.id }}" data-url="{% url 'favorite_announcement' %}" aria-label="Remove from favorites">
+                          Remove
+                      </button>
+                  </div>
+              </div>
+          </div>
+        {% endwith %}
+      {% endfor %}
+    {% else %}
+      <p>You have no saved favorites.</p>
+    {% endif %}
+  </section>
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+<script src = "{% static 'announcements/js/favorite.js' %}"></script>
+{% endblock %}

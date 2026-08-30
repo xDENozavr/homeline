@@ -1,0 +1,99 @@
+#share-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#share-modal.hidden {
+    display: none;
+}
+
+#share-modal .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 0;
+}
+
+#share-modal .modal-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+#share-modal .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.share-block {
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    width: 330px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Sans 3';
+}
+
+.share-block h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-family: 'Montserrat';
+}
+
+.copy-block {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.copy-block input {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #AAABB8;
+    border-radius: 5px;
+}
+
+.copy-block button {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    font-family: 'Ubuntu';
+    font-size: 15px;
+}
+
+.share-button {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.telegram {
+    background-color: #0088cc;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.twitter {
+    background-color: #1da1f2;
+}
+
+.share-button:hover,
+.copy-block button:hover {
+    opacity: 0.8;
+}

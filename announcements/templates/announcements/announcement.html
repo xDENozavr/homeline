@@ -1,0 +1,116 @@
+{% extends 'homeline/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'announcements/css/modal_apartment_photo.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'announcements/css/announcement.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'announcements/css/modal_share.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section>
+       <article class="images">
+          <div class="main-img">
+             <button id="open-modal" data-an-id="{{ an.id }}" class="image-button" type="button" aria-label="Open photo">
+                <img src="{{ an.images.0 }}" alt="Photo" width="834" height="644" loading="lazy">
+             </button>
+          </div>
+
+          <div class="info">
+             <div class="value">
+                <div class="name-value">
+                   <h1 class="address">{{ an.announcement_title }}</h1>
+                   <span class="value-price"><b>{{ an.price }}$</b></span>
+                </div>
+             </div>
+
+             <div class="info_an">
+                <ul class="elements">
+                   <li>
+                      <ul class="img-name">
+                         <li><img src="{% static 'announcements/media/user_icon.png' %}" alt="Icon" width="65" height="65"></li>
+                         <li class="name">{{ an.seller_name }}</li>
+                      </ul>
+                   </li>
+                   <li class="hidden_button">
+                     <button class="show-button" type="button" data-replace-url="{% url 'get_phone' %}" data-an-id="{{ an.id }}" aria-label="Show phone number">
+                      <span class="show-button__label">Show phone number</span>
+                     </button>
+                   </li>
+                   <li class="hidden_button">
+                      <button class="show-button_link" type="button" data-ann-link="{{ an.link }}" aria-label="Show listing"><span class="show-button_link__label">Show listing</span>
+                      </button>
+                   </li>
+                </ul>
+             </div>
+          </div>
+
+          <div class="block">
+             <div class="valuation">
+                {% if is_potential_offer %}
+                   <h1 class="potential-offer">Potentially great deal</h1>
+                {% endif %}
+
+                <p class="price-difference">
+                   Listing is <b>{{ price_direction }} by {{ diff_percent|floatformat:1 }}%</b> compared to average price at {{ an.street }}
+                </p>
+             </div>
+
+             <div class="dollar-uah-share">
+                <div class="dollar-uah">
+                   <ul>
+                      <li class="dollar"><b>{{ an.price }}$</b></li>
+                      <li class="uah">· {{ price_uah }} UAH</li>
+                   </ul>
+                </div>
+
+                <div class="fav-n_share">
+                   <div class="favorite">
+                      <button
+                         class="fav-but{% if is_favorited %} active{% endif %}" type="button" data-an-id="{{ an.id }}" data-url="{% url 'favorite_announcement' %}" aria-label="{% if is_favorited %}Remove from favorites{% else %}Add to favorites{% endif %}">
+                         <img src="{% static is_favorited|yesno:'announcements/media/fav_icon_active.png,announcements/media/fav_icon.png' %}" data-default-src="{% static 'announcements/media/fav_icon.png' %}" data-active-src="{% static 'announcements/media/fav_icon_active.png' %}" alt="{% if is_favorited %}In favorites{% else %}Not in favorites{% endif %}" width="25" height="25" loading="lazy">
+                      </button>
+                   </div>
+                   <div class="share">
+                      <button class="shbutt" type="button" id="open-share-modal" data-announcement-id="{{ an.id }}" aria-label="Share">
+                         Share
+                         <img src="{% static 'announcements/media/share.png' %}" class="share-icon" alt="Share" height="25" width="25" loading="lazy">
+                      </button>
+                   </div>
+                </div>
+             </div>
+
+             <div class="tags">
+                <ul class="an-dis-rooms">
+                   <li><a href="{% url 'home' %}?location={{ an.street|urlencode }}">{{ an.street }}</a></li>
+                   <li><a href="{% url 'home' %}?location={{ an.district|urlencode }}">{{ an.district }}</a></li>
+                   <li><a href="{% url 'home' %}?rooms={{ an.rooms }}">{{ an.rooms }} room{% if an.rooms != 1 %}s{% endif %}</a></li>
+                </ul>
+             </div>
+
+             <div class="description">
+                <p><b>Area:</b> {{ an.meters }}m<sup><small>2</small></sup></p>
+                <p><b>Floor:</b> {{ an.floor }}</p>
+                <p>{{ an.content }}</p>
+             </div>
+          </div>
+       </article>
+    </section>
+{% endblock %}
+
+{% block modals %}
+    <div id="modal-container" class="modal-photo hidden">
+      <div class="photo-modal-content" id="modal-content"></div>
+    </div>
+
+    {% include 'announcements/includes/modal_share.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'announcements/js/modal_apartment_carousel.js' %}"></script>
+    <script type="module" src="{% static 'announcements/js/modal_photo.js' %}"></script>
+    <script src="{% static 'announcements/js/modal_share.js' %}" defer></script>
+    <script src="{% static 'announcements/js/favorite.js' %}"></script>
+    <script src="{% static 'announcements/js/phone_and_link.js' %}" defer></script>
+
+{% endblock %}

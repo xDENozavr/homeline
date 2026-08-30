@@ -1,0 +1,18 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    <link type="text/css" rel="stylesheet" href="{% static 'announcements/css/admin_buttons.css' %}">
+{% endblock %}
+
+{% block object-tools %}
+  <form class="usd_form" method="post" action="{% url 'admin:run_update_usd' %}">
+      {% csrf_token %}
+      <button type="submit" class="usd_button">Update USD rate</button>
+  </form>
+  <form class="parser_form" method="post" action="{% url 'admin:run_parser' %}">
+      {% csrf_token %}
+      <button type="submit" class="parser_button">Run parser</button>
+  </form>
+  {{ block.super }}
+{% endblock %}

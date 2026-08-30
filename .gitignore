@@ -1,0 +1,45 @@
+# --- Secrets and environment configuration ---
+.env
+.env.*
+!.env.example
+
+# --- Virtual environment ---
+.venv/
+venv/
+env/
+
+# --- Python compiled files ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Database (in case of falling back to SQLite) ---
+db.sqlite3
+db.sqlite3-journal
+
+# --- Media and static files (generated, not source) ---
+media/
+staticfiles/
+static_root/
+
+# --- Logs ---
+*.log
+
+# --- IDE (PyCharm) ---
+.idea/
+
+# --- IDE (VS Code) ---
+.vscode/
+
+# --- Windows system files ---
+Thumbs.db
+desktop.ini
+
+# --- macOS system files ---
+.DS_Store
+
+# --- Test coverage (pytest / coverage.py) ---
+.coverage
+htmlcov/
+.pytest_cache/

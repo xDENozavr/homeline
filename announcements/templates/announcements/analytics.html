@@ -1,0 +1,108 @@
+{% extends 'homeline/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'announcements/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'announcements/css/analytics.css' %}">
+{% endblock %}
+
+{% block content %}
+  <main>
+    <section>
+      <h1>Average Price per m² by District</h1>
+        <table class="table" id="district_table">
+          <thead>
+            <tr>
+              <th>District</th>
+              <th>Average Price per m² ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in by_district %}
+              <tr>
+                <td>{{ item.district }}</td>
+                <td>{{ item.avg_price|floatformat:2 }}$</td>
+              </tr>
+            {% empty %}
+              <tr><td colspan="2">No data available</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <h2>Average Price per m² by Street</h2>
+        <form class="filter-form" id="street-filter">
+          <label class="street_m2" for="street_input">Search street:</label>
+          <input type="text" id="street_input" name="street" value="{{ current_street }}" placeholder="Enter street name" class="input">
+          <button type="button" class="btn" id="street-search-btn">Search</button>
+        </form>
+
+        <table class="table" id="street_table">
+          <thead>
+            <tr>
+              <th>Street</th>
+              <th>Average Price per m² ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in by_street %}
+              <tr>
+                <td>{{ item.street }}</td>
+                <td>{{ item.avg_price|floatformat:2 }}</td>
+              </tr>
+            {% empty %}
+              <tr><td colspan="2">No data available</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <h2>Average Price by Number of Rooms</h2>
+
+        <h3>By District</h3>
+        <form class="filter-form rooms-form" id="rooms-district-form">
+          <label class="style-label" for="room_district">District:</label>
+          <select id="room_district" name="room_district" class="input">
+            <option value="">- all -</option>
+            {% for item in by_district %}
+              <option value="{{ item.district }}"
+                {% if item.district == current_room_district %}selected{% endif %}>
+                {{ item.district }}
+              </option>
+            {% endfor %}
+          </select>
+          <label class="style-label" for="room_count">Rooms:</label>
+          <input type="number" id="room_count" name="room_count" min="1" value="{{ current_room_count }}" class="input">
+          <button type="button" class="btn" id="rooms-district-btn">Show</button>
+        </form>
+        <div id="room_district-result">
+          {% if current_room_district and current_room_count %}
+            <p>Found {{ room_count_district }} listing{% if room_count_district != 1 %}s{% endif %} with {{ current_room_count }} room{% if current_room_count != 1 %}s{% endif %} in {{ current_room_district }}.<br>
+            Average price for {{ current_room_count }} room{% if current_room_count != 1 %}s{% endif %} in {{ current_room_district }} = {{ avg_price_rooms_district|floatformat:2 }} $</p>
+          {% endif %}
+        </div>
+
+        <h3>By Street</h3>
+        <form class="filter-form rooms-form" id="rooms-street-form">
+          <label class="style-label" for="room_street">Street:</label>
+          <input type="text" id="room_street" name="room_street" list="street_list" class="input" placeholder="Enter street name..." value="{{ current_room_street }}">
+          <datalist id="street_list">
+            {% for s in street_list %}
+              <option value="{{ s }}">
+            {% endfor %}
+          </datalist>
+          <label class="style-label" for="room_count_street">Rooms:</label>
+          <input type="number" id="room_count_street" name="room_count_street" min="1" value="{{ current_room_count_street }}" class="input">
+          <button type="button" class="btn" id="rooms-street-btn">Show</button>
+        </form>
+        <div id="room_street-result">
+          {% if current_room_street and current_room_count_street %}
+            <p>Found {{ room_count_street }} listing{% if room_count_street != 1 %}s{% endif %} with {{ current_room_count_street }} room{% if current_room_count_street != 1 %}s{% endif %} at {{ current_room_street }}.<br>
+            Average price for {{ current_room_count_street }} room{% if current_room_count_street != 1 %}s{% endif %} at {{ current_room_street }} = {{ avg_price_rooms_street|floatformat:2 }} $</p>
+          {% endif %}
+        </div>
+    </section>
+  </main>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'announcements/js/analytics.js' %}"></script>
+{% endblock %}

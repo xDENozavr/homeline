@@ -1,0 +1,50 @@
+{% extends 'homeline/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'users/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+       <section class="container_pers">
+          <div class="person">
+             <div class="person_profile">
+                <header class="profile_header">
+                   <img src="{% static 'users/media/account_icon.jpg' %}" alt="Profile picture" width="150" loading="lazy">
+                   <h1>Profile</h1>
+                </header>
+             </div>
+
+
+             <div class="person_info">
+                <div class="info_header">
+                   <h2>Basic Information</h2>
+                   <span>
+                      {% if user.is_superuser %}
+                        Administrator
+                      {% else %}
+                        User
+                      {% endif %}
+                   </span>
+                </div>
+
+                <dl>
+                   <dt>Full Name</dt>
+                   <dd>
+                     {% if user.first_name or user.last_name %}
+                      {{ user.first_name }} {{ user.last_name }}
+                     {% else %}
+                      Not provided
+                     {% endif %}
+                   </dd>
+
+                   <dt>Email</dt>
+                   <dd>{{ user.email|default:"Not provided" }}</dd>
+                </dl>
+             </div>
+          </div>
+       </section>
+    </main>
+{% endblock %}

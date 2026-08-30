@@ -1,0 +1,68 @@
+.main-container{
+	line-height: 1.7;
+	color: #333;
+	font-family: 'Raleway';
+}
+
+.main-container h1{
+	font-family: 'Montserrat';
+	font-size: 32px;
+	margin-bottom: 16px;
+}
+
+.welcome_title{
+	margin-bottom: 20px;
+}
+
+.main-container h2{
+	font-family: 'Sans 3';
+	margin-top: 12px;
+	font-weight: normal;
+}
+
+.main-container h2{
+	font-size: 22px;
+}
+
+.main-container p{
+    font-size: 20px;
+}
+
+.last_update{
+	margin-bottom: 0px;
+}
+
+.connection{
+	margin-top: 30px;
+}
+
+
+
+
+@media (max-width: 760px){
+    main{
+        padding: 40px;
+    }
+}
+
+@media (max-width: 480px){
+    main{
+        padding: 40px 15px 30px 15px;
+    }
+
+    .main-container{
+        line-height: 1.4;
+    }
+
+    .main-container h1{
+        font-size: 24px;
+    }
+
+    .main-container h2{
+        font-size: 19px;
+    }
+
+    .main-container p{
+        font-size: 17px;
+    }
+}

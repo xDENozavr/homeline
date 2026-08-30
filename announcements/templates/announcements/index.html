@@ -1,0 +1,154 @@
+{% extends 'homeline/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'announcements/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'announcements/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+       <section class="banner">
+          <div class="banner_info">
+             <h1>HomeLine - the best real estate aggregator in Kryvyi Rih</h1>
+
+             <div class="search-container">
+                <form class="search-form" method="get" action="{% url 'home' %}">
+                   <input class="search-bar_start" type="search" name="location" placeholder="District or street" value="{{ request.GET.location }}">
+                   <input class="search-bar_center" type="search" name="rooms" placeholder="1, 2 rooms" value="{{ request.GET.rooms }}">
+                   <input class="search-bar_end" type="search" name="price" placeholder="Price $" value="{{ request.GET.price }}">
+
+                   <div class="search-button">
+                     <button class="find-button" type="submit" aria-label="Search button">Search</button>
+                   </div>
+                </form>
+             </div>
+
+          </div>
+       </section>
+
+       <section class="main-section">
+          <div class="main-title">
+              {% if not filters.location and not filters.rooms and not filters.price_range and not filters.meters_range %}
+                 <h2>You might like</h2>
+              {% else %}
+                 <h2>Filtered by:
+                    <div class="an_filters">
+                      {% if filters.location %}
+                         {{ filters.location }},
+                      {% endif %}
+                      {% if filters.rooms %}
+                         {{ filters.rooms }} rm.,
+                      {% endif %}
+                      {% if filters.price_range %}
+                         {% if filters.price_range == 'up_to_10000' %}
+                            up to $10k,
+                         {% elif filters.price_range == 'from10000_to40000' %}
+                            $10k - $40k,
+                         {% elif filters.price_range == 'from40000_to100000' %}
+                            $40k - $100k,
+                         {% elif filters.price_range == 'over_100000' %}
+                            over $100k,
+                         {% endif %}
+                      {% endif %}
+                      {% if filters.meters_range %}
+                         {% if filters.meters_range == 'up_to25met' %}
+                            up to 25 m²,
+                         {% elif filters.meters_range == 'from25met_to40met' %}
+                            25 m² - 40 m²,
+                         {% elif filters.meters_range == 'from40met_to75met' %}
+                            40 m² - 75 m²,
+                         {% elif filters.meters_range == 'over_75met' %}
+                            over 75 m²,
+                         {% endif %}
+                      {% endif %}
+                   </div>
+                 </h2>
+              {% endif %}
+          </div>
+
+
+          <div class="announcement_menu">
+             {% for row in homeline_rows %}
+                <div class="announcements">
+                   {% for an in row %}
+                      <article>
+                         <div class="apartment_an">
+                            <div class="apartment_img">
+                               <a href="{% url 'announcement' an.id %}" class="an-wrap">
+                                  <img src="{{ an.images.0 }}" alt="Listing" height="211" loading="lazy">
+                               </a>
+                            </div>
+                            <div class="apartment_text">
+                               <div class="tags">
+                                  <ul class="tags_list">
+                                     <li>
+                                                  <button class="price" onclick="filterByPrice({{ an.price }})" aria-label="Price in currency">
+                                                    {{ an.price }}$
+                                                  </button>
+                                                </li>
+                                     <li>
+                                        <a href="?rooms={{ an.rooms }}">
+                                           <button class="features" aria-label="Number of rooms">{{ an.rooms }} rm.</button>
+                                        </a>
+                                     </li>
+                                     <li><button class="features" onclick="filterByMeters({{ an.meters }})" aria-label="Square meters">{{ an.meters }} m<sup><small>2</small></sup></button></li>
+                                  </ul>
+                               </div>
+                               <div class="info-info">
+                                  <a href="#" class="an-wrap">
+                                     <h3 class="street">{{ an.street }}</h3>
+                                  </a>
+                                  <div class="place-filter">
+                                     <button class="district" onclick="alert('Button clicked!')">{{ an.district |upper }}</button>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </article>
+                   {% endfor %}
+                </div>
+             {% endfor %}
+          </div>
+
+          {% with request.GET.urlencode as full_query %}
+             {% with full_query|cut:"page="|cut:"&page=" as query_string %}
+                <div class="num_page">
+                  <div class="pagination">
+                   {% if page_obj.has_previous %}
+                     <a href="?{{ query_string }}&page=1">1</a>
+                   {% endif %}
+
+                   {% if page_obj.number > 4 %}
+                     <span class="dots">...</span>
+                   {% endif %}
+
+                   {% for num in page_obj.paginator.page_range %}
+                     {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+                      {% if num == page_obj.number %}
+                        <span class="current">{{ num }}</span>
+                      {% else %}
+                        <a href="?{{ query_string }}&page={{ num }}">{{ num }}</a>
+                      {% endif %}
+                     {% endif %}
+                   {% endfor %}
+
+                   {% if page_obj.number < page_obj.paginator.num_pages|add:"-3" %}
+                     <span class="dots">...</span>
+                   {% endif %}
+
+                   {% if page_obj.has_next %}
+                     <a href="?{{ query_string }}&page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                   {% endif %}
+                  </div>
+                </div>
+             {% endwith %}
+          {% endwith %}
+
+       </section>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+        <script src="{% static 'announcements/js/filter.js' %}"></script>
+{% endblock %}

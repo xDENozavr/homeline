@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <link type="text/css" rel="stylesheet" href="{% static 'users/css/style.css' %}">
+   <link type="text/css" rel="stylesheet" href="{% static 'users/css/register.css' %}">
+    <title>HomeLine</title>
+</head>
+<body>
+    <main>
+       <section>
+          <div class="authorization_block">
+             <div class="title">
+                <header>
+                   <h1>Create an account</h1>
+                </header>
+             </div>
+
+
+             <div class="receiving_data">
+                <div class="welcome">
+                   <h2><b>Welcome to HomeLine</b></h2>
+                </div>
+
+                <form class="data" action="{% url 'users:registration' %}" method="post">
+                   <div class="log-pass-wrap">
+                      {% csrf_token %}
+                      {% for f in form %}
+                      <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+                      <div class="form-error">{{ f.errors }}</div>
+                      {% endfor %}
+                   </div>
+
+                   <div class="agreement">
+                      <input type="checkbox" id="terms" name="terms" required>
+                      <label for="terms">
+                         By signing up, you agree to our
+                         <a href="{% url 'terms' %}" class="rules">Terms of Use.</a>
+                      </label>
+                   </div>
+
+                   <button class="sending_data" type="submit">Sign up</button>
+                </form>
+
+                <div class="login">
+                   Already have an account?
+                   <a href="{% url 'users:login' %}">Log in</a>
+                </div>
+             </div>
+          </div>
+       </section>
+    </main>
+</body>
+</html>

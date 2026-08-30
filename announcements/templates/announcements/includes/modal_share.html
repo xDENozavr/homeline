@@ -1,0 +1,29 @@
+{# templates/announcements/includes/modal_share.html #}
+<div id="share-modal" class="modal hidden">
+  <div class="modal-overlay"></div>
+  <div class="modal-wrapper">
+    <div class="modal-content share-modal-content">
+
+      <div class="share-block">
+        <h3>Share:</h3>
+
+        <div class="copy-block">
+          <input type="text" id="share-link" readonly value="">
+          <button type="button" id="copy-link-button" aria-label="Copy link button">
+            Copy
+          </button>
+        </div>
+
+        <a href="#" target="_blank" class="share-button telegram" id="share-telegram">
+          Share on Telegram
+        </a>
+        <a href="#" target="_blank" class="share-button facebook" id="share-facebook">
+          Share on Facebook
+        </a>
+        <a href="#" target="_blank" class="share-button twitter" id="share-twitter">
+          Share on Twitter
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

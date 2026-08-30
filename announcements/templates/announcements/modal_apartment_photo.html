@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>HomeLine</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'announcements/css/announcement.css' %}">
+</head>
+<body>
+    <div class="back-close">
+       <ul class="icons">
+          <li>
+             <button type="button" class="back-button" aria-label="Back">
+                <img src="{% static 'announcements/media/back_button.png' %}" alt="" width="40" loading="lazy">
+             </button>
+          </li>
+          <li>
+             <button type="button" class="close-button" aria-label="Close">
+                <img src="{% static 'announcements/media/close_icon.png' %}" alt="" width="34" height="34" loading="lazy">
+             </button>
+          </li>
+       </ul>
+    </div>
+
+
+    <div class="main">
+       <div class="title">
+          <h1>{{ an.announcement_title }}</h1>
+       </div>
+
+       <div class="content">
+          <ul class="content_list">
+             <li>
+                <div class="content-left">
+                   <div class="main-image">
+                      <ul class="img_list">
+                         <li>
+                            <button class="move_icon" type="button" aria-label="Previous image">
+                               <img src="{% static 'announcements/media/back.png' %}" alt="Previous" height="50" loading="lazy">
+                            </button>
+                         </li>
+                         <li>
+                            <img class="announcement_main_img" src="{{ images.0 }}" alt="Photo" width="530" height="530" loading="lazy">
+                         </li>
+                         <li>
+                            <button class="move_icon" type="button" aria-label="Next image">
+                               <img src="{% static 'announcements/media/forward.png' %}" alt="Next" height="50">
+                            </button>
+                         </li>
+                      </ul>
+                   </div>
+
+                   <div class="page">
+                   </div>
+
+                   <div class="second-class-img">
+                      <ul class='second-tier'>
+                         <li>
+                            <button class='sec_but' type="button" aria-label="Photo">
+                               <img src="{{ images.1 }}" alt="Photo" width="200" height="138" loading="lazy">
+                            </button>
+                         </li>
+                         <li>
+                            <button class='sec_but' type="button" aria-label="Photo">
+                               <img src="{{ images.2 }}" alt="Photo" width="200" height="138" loading="lazy">
+                            </button>
+                         </li>
+                         <li>
+                            <button class='sec_but' type="button" aria-label="Photo">
+                               <img src="{{ images.3 }}" alt="Photo" width="200" height="138" loading="lazy">
+                            </button>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+             </li>
+             <li>
+                <div class="elements-descr">
+                   <ul class="elements">
+                      <li>
+                         <ul class="img-name">
+                            <li>
+                               <img src="{% static 'announcements/media/user_icon.png' %}" alt="Icon" width="65" height="65">
+                            </li>
+                            <li class="name">{{ an.seller_name }}</li>
+                         </ul>
+                      </li>
+                      <li class="hidden_button">
+                        <button class="show-button" type="button" data-replace="<a href='tel:{{ an.phone }}' style='color: black; width: 100%; height: 100%; text-align: center; line-height: 60px; display: block;'>{{ an.phone }}</a>" aria-label="Display button">Show phone number</button>
+                      </li>
+                      <li class="hidden_button">
+                        <button class="show-button" type="button" data-replace='<a href="{{ an.link }}" target="_blank" style="color: black; width: 100%; height: 100%; text-align: center; line-height: 60px; display: block;">View listing</a>' aria-label="Display button">Show listing</button>
+                      </li>
+                   </ul>
+                </div>
+             </li>
+          </ul>
+       </div>
+    </div>
+
+</body>
+</html>

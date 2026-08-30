@@ -1,0 +1,46 @@
+{% extends 'homeline/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'pages/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'pages/css/faq.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="question-answer">
+       <h1>Frequently Asked Questions</h1>
+       <dl>
+          <dt>- How extensive is your service's street coverage?</dt>
+          <dd>
+             Our service covers all key areas and streets in the city, including both central and remote districts.
+             We regularly update our data to provide accurate information across the entire city. If you need more
+             specific details, you can use our search filters by district or street.
+          </dd>
+
+
+       <dt>- What types of real estate can be found on your website?</dt>
+       <dd>
+          Currently, our website only features listings for apartments for sale.
+       </dd>
+
+       <dt>- How can I know if a property I'm interested in has been sold or unlisted?</dt>
+       <dd>
+          We constantly update the information on our website. If a property is sold or removed from the market,
+          we promptly update its status and remove it from available listings. You can always be sure that only
+          up-to-date offers are displayed on our platform.
+       </dd>
+
+       <dt>- Can I post my own listing on your website?</dt>
+       <dd>
+          Unfortunately, you cannot post listings directly on our website as we are a real estate aggregator, not a direct listing platform.
+          However, if you publish your listing on one of the popular real estate websites, it will most likely appear on our service as well.
+       </dd>
+
+       <dt>- I have a partnership proposal. Where can I reach out?</dt>
+       <dd>
+          Thank you for your interest! You can send your proposal to our email address, and we will certainly review
+          your request. <p><b>Email: </b><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vlasov.den03@gmail.com" target="_blank">vlasov.den03@gmail.com</a></p>
+       </dd>
+       </dl>
+    </section>
+{% endblock %}

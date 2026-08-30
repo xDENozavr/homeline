@@ -1,0 +1,69 @@
+dl{
+	font-size: 20px;
+}
+
+dt{
+	font-family: 'Sans 3';
+	font-size: 22px;
+}
+
+dd{
+	margin-bottom: 12px;
+}
+
+
+
+
+
+.question-answer{
+	line-height: 1.7;
+	color: #333;
+	font-family: 'Raleway';
+}
+
+.question-answer h1{
+	font-family: 'Montserrat';
+	font-size: 32px;
+	margin-bottom: 16px;
+}
+
+.question-answer p{
+	margin-top: 20px;
+}
+
+
+
+
+@media (max-width: 760px){
+    dt{
+        max-width: 520px;
+    }
+
+    main{
+        padding: 40px;
+    }
+}
+
+@media (max-width: 480px){
+
+    main{
+        padding: 40px 15px 30px 15px;
+    }
+
+    dt{
+        font-size: 19px;
+    }
+
+    dd{
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+
+    .question-answer{
+    line-height: 1.4;
+    }
+
+    .question-answer h1{
+        font-size: 24px;
+    }
+}

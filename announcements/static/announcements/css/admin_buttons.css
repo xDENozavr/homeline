@@ -1,0 +1,26 @@
+.usd_form{
+    margin-bottom: 10px;
+    max-width: 140px;
+}
+
+.parser_form{
+    max-width: 140px;
+}
+
+.usd_button{
+    background-color: #2E9CCA;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    max-width: 132 px;
+}
+
+.parser_button{
+    background-color: #2E9CCA;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+
+}
