@@ -125,3 +125,49 @@ h1, h2, h3, h4, h5, h6{
 	font-size: 16px;
 	font-family: 'Ubuntu';
 }
+
+@media (max-width: 576px){
+    .authorization_block{
+        width: 100%;
+        max-width: 390px;
+    }
+
+    .receiving_data{
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .form-label{
+        display: block;
+        min-width: 0;
+        max-width: 100%;
+        font-size: 17px;
+        margin-bottom: 4px;
+    }
+
+    .data_entry{
+        height: 40px;
+    }
+
+    .sending_data{
+        font-size: 17px;
+    }
+
+    .welcome h2{
+        font-size: 15px;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .sending_data:hover {
+        background-color: #f6dcab;
+        color: #000;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .sending_data:active {
+        background-color: #f6dcab;
+        color: #000;
+    }
+}

@@ -97,3 +97,10 @@
 .copy-block button:hover {
     opacity: 0.8;
 }
+
+@media (max-width: 400px) {
+    .share-block {
+        width: 90%;
+        max-width: 330px;
+    }
+}

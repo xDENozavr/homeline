@@ -1,31 +1,31 @@
 a{
-	color: black;
-	text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 .back-close,
 .main{
-	background-color: #3E556C;
-	max-width: 1520px;
+    background-color: #3E556C;
+    max-width: 1520px;
     margin: 0 auto;
     padding: 0 90px;
 }
 
 .back-close{
-	height: 80px;
+    height: 80px;
 }
 
 .icons{
-	display: flex;
-	justify-content: space-between;
-	padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 22px;
 }
 
 .back-button,
 .close-button{
-	background-color: #3E556C;
-	cursor: pointer;
-	max-width: 1520px;
+    background-color: #3E556C;
+    cursor: pointer;
+    max-width: 1520px;
   margin: 0 auto;
 }
 
@@ -34,87 +34,87 @@ a{
 
 
 .title{
-	padding: 25px 0;
-	color: #FFFFFF;
-	font-family: 'Raleway';
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-family: 'Raleway';
 }
 
 .title h1{
-	font-size: 30px;
+    font-size: 30px;
 }
 
 
 .content_list{
-	display: flex;
-	gap: 27px;
-	flex-wrap: wrap;
+    display: flex;
+    gap: 27px;
+    flex-wrap: wrap;
 }
 
 .main-image{
-	width: 620px;
+    width: 620px;
 }
 
 .img_list{
-	display: flex;
-	gap: 20px;
-	align-items: center;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .move_icon{
-	height: 50px;
-	cursor: pointer;
+    height: 50px;
+    cursor: pointer;
 }
 
 .page{
-	display: flex;
-	justify-content: center;
-	margin: 25px 0 21px;
-	color: #fff;
-	font-family: 'Raleway';
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 21px;
+    color: #fff;
+    font-family: 'Raleway';
 }
 
 .second-class-img{
-	margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 .second-tier{
-	display: flex;
-	gap: 25px;
+    display: flex;
+    gap: 25px;
 }
 
 .sec_but{
-	height: 138px;
-	cursor: pointer;
+    height: 138px;
+    cursor: pointer;
 }
 
 
 
 .elements-descr{
-	width: 450px;
-	background-color: #282C40;
+    width: 450px;
+    background-color: #282C40;
 }
 
 .elements{
-	padding: 22px 0px 41px 40px;
+    padding: 22px 0px 41px 40px;
 }
 
 .img-name{
-	display: flex;
-	gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .name{
-	display: flex;
-	align-items: flex-end;
-	color: #FFF;
-	font-family: 'Inter';
-	font-size: 22px;
+    display: flex;
+    align-items: flex-end;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 22px;
 }
 
 .hidden_button{
-	height: 60px;
-	width: 370px;
-	margin-top: 25px;
+    height: 60px;
+    width: 370px;
+    margin-top: 25px;
 }
 
 
@@ -126,4 +126,61 @@ html.no-scroll,
 body.no-scroll {
   overflow: hidden;
   height: 100%;
+}
+
+
+
+
+@media (max-width: 992px) {
+    .back-close,
+    .main{
+        padding: 0 30px;
+    }
+
+    .main-image{
+        width: 100%;
+    }
+
+    .announcement_main_img{
+        width: 100%;
+        height: auto;
+    }
+
+    .elements-descr{
+        width: 100%;
+    }
+
+    .hidden_button{
+        width: 100%;
+    }
+}
+
+/* ── MOBILE (≤ 576px) ── */
+@media (max-width: 576px) {
+    .back-close,
+    .main{
+        padding: 0 15px;
+    }
+
+    .title h1{
+        font-size: 22px;
+    }
+
+    .second-tier{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sec_but img{
+        width: 90px;
+        height: auto;
+    }
+
+    .elements{
+        padding: 18px 0 25px 18px;
+    }
+
+    .name{
+        font-size: 18px;
+    }
 }

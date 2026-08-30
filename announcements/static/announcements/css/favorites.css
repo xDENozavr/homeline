@@ -91,3 +91,52 @@
 .remove-btn:hover {
     background-color: #d32f2f;
 }
+
+
+
+
+@media (max-width: 992px) {
+    .favorites-section {
+        padding: 30px 20px;
+    }
+
+    .favorite-card img {
+        width: 220px;
+    }
+}
+
+@media (max-width: 800px) {
+    .favorites-header h1 {
+        font-size: 24px;
+    }
+
+    .favorite-card {
+        flex-direction: column;
+    }
+
+    .fav-img,
+    .favorite-card img {
+        width: 100%;
+        max-height: none;
+        height: 180px;
+    }
+
+    .card-info {
+        height: auto;
+        padding: 15px;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .view-btn {
+        margin-right: 0;
+    }
+
+    .btn {
+        flex: 1;
+        text-align: center;
+    }
+}

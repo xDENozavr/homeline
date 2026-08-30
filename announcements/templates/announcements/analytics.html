@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'announcements/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'homeline/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'announcements/css/analytics.css' %}">
 {% endblock %}
 
@@ -10,24 +10,26 @@
   <main>
     <section>
       <h1>Average Price per m² by District</h1>
-        <table class="table" id="district_table">
-          <thead>
-            <tr>
-              <th>District</th>
-              <th>Average Price per m² ($)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in by_district %}
+        <div class="table-wrapper">
+          <table class="table" id="district_table">
+            <thead>
               <tr>
-                <td>{{ item.district }}</td>
-                <td>{{ item.avg_price|floatformat:2 }}$</td>
+                <th>District</th>
+                <th>Average Price per m² ($)</th>
               </tr>
-            {% empty %}
-              <tr><td colspan="2">No data available</td></tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {% for item in by_district %}
+                <tr>
+                  <td>{{ item.district }}</td>
+                  <td>{{ item.avg_price|floatformat:2 }}$</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="2">No data available</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
 
         <h2>Average Price per m² by Street</h2>
         <form class="filter-form" id="street-filter">
@@ -36,24 +38,27 @@
           <button type="button" class="btn" id="street-search-btn">Search</button>
         </form>
 
-        <table class="table" id="street_table">
-          <thead>
-            <tr>
-              <th>Street</th>
-              <th>Average Price per m² ($)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in by_street %}
+        <div class="table-wrapper">
+          <table class="table" id="street_table">
+            <thead>
               <tr>
-                <td>{{ item.street }}</td>
-                <td>{{ item.avg_price|floatformat:2 }}</td>
+                <th>Street</th>
+                <th>Average Price per m² ($)</th>
               </tr>
-            {% empty %}
-              <tr><td colspan="2">No data available</td></tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {% for item in by_street %}
+                <tr>
+                  <td>{{ item.street }}</td>
+                  <td>{{ item.avg_price|floatformat:2 }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="2">No data available</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
 
         <h2>Average Price by Number of Rooms</h2>
 

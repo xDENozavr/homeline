@@ -43,11 +43,10 @@
 
 
 body{
-	font-size: 20px;
-	overflow-x: auto;
-	max-width: 1520px;
-	margin: 0 auto;
-	box-sizing: border-box
+    font-size: 20px;
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box
 }
 
 main{
@@ -301,4 +300,60 @@ img{
 	font-size: 15px;
 	height: 35px;
 	align-items: center;
+}
+
+
+
+
+@media (max-width: 992px) {
+    .logo {
+        width: auto;
+        margin-left: 20px;
+    }
+
+    .navbar-settings {
+        width: auto;
+        margin-right: 20px;
+    }
+
+    .navbar-wrap {
+        display: none;
+    }
+
+    .dropdown .invisible {
+        display: block;
+    }
+
+    .footer_text {
+        padding: 30px 40px;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 16px;
+    }
+
+    .navbar {
+        height: 60px;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .about {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

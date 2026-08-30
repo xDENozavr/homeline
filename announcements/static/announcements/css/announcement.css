@@ -1,77 +1,77 @@
 .images{
-	display: flex;
-	flex-wrap: wrap;
-	gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .main-img{
-	height: 644px;
+    height: 644px;
 }
 
 .image-button{
-	height: 644px;
-	cursor: pointer;
+    height: 644px;
+    cursor: pointer;
 }
 
 .value,
 .info_an{
-	width: 450px;
-	background-color: #34495E;
+    width: 450px;
+    background-color: #34495E;
 }
 
 .name-value{
-	height: 302.8px;
-	padding: 22px;
-	margin-bottom: 38px;
-	color: #fff;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+    height: 302.8px;
+    padding: 22px;
+    margin-bottom: 38px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 
 .addres{
-	font-size: 22px;
-	font-family: 'Raleway';
+    font-size: 22px;
+    font-family: 'Raleway';
 }
 
 .value-price{
-	font-size: 36px;
-	font-family: 'Inter';
+    font-size: 36px;
+    font-family: 'Inter';
 }
 
 .elements{
-	padding: 22px 0px 41px 40px;
+    padding: 22px 0px 41px 40px;
 }
 
 .img-name{
-	display: flex;
-	gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .name{
-	display: flex;
-	align-items: flex-end;
-	color: #FFF;
-	font-family: 'Inter';
-	font-size: 22px;
+    display: flex;
+    align-items: flex-end;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 22px;
 }
 
 .hidden_button{
-	height: 60px;
-	width: 370px;
-	margin-top: 25px;
+    height: 60px;
+    width: 370px;
+    margin-top: 25px;
 }
 
 .show-button,
 .show-button_link{
-	height: inherit;
-	width: inherit;
-	background-color: #FFFEFE;
-	border-radius: 10px;
-	font-size: 19px;
-	font-family: 'Sans 3';
-	cursor: pointer;
+    height: inherit;
+    width: inherit;
+    background-color: #FFFEFE;
+    border-radius: 10px;
+    font-size: 19px;
+    font-family: 'Sans 3';
+    cursor: pointer;
 }
 
 .fav-n_share{
@@ -93,26 +93,26 @@
 }
 
 .dollar-uah-share{
-	max-width: 834px;
-	display: flex;
-	justify-content: space-between;
+    max-width: 834px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .dollar-uah ul{
-	display: flex;
-	gap: 15px;
-	align-items: flex-end;
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
 }
 
 .dollar{
-	font-size: 34px;
-	font-family: "Ubuntu";
+    font-size: 34px;
+    font-family: "Ubuntu";
 }
 
 .uah{
-	font-size: 23px;
-	color: #414142;
-	font-family: "Sans 3";
+    font-size: 23px;
+    color: #414142;
+    font-family: "Sans 3";
 }
 
 
@@ -127,69 +127,69 @@
 }
 
 .shbutt{
-	width: 165px;
-	height: 50px;
-	border: 2px solid #000;
-	border-radius: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 15px;
-	font-family: "Raleway";
-	font-size: 18px;
-	cursor: pointer;
+    width: 165px;
+    height: 50px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    font-family: "Raleway";
+    font-size: 18px;
+    cursor: pointer;
 }
 
 
 .tags{
-	width: 834px;
+    width: 834px;
 }
 
 .an-dis-rooms{
-	display: flex;
-	gap: 17px;
-	margin: 14px 0 10px;
+    display: flex;
+    gap: 17px;
+    margin: 14px 0 10px;
 }
 
 .an-dis-rooms li{
-	padding: 0 35px;
-	background-color: #2F7A9C;
-	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    padding: 0 35px;
+    background-color: #2F7A9C;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .an-dis-rooms li a{
-	width: inherit;
-	display: block;
-	color: #fff;
-	font-family: 'Inter';
+    width: inherit;
+    display: block;
+    color: #fff;
+    font-family: 'Inter';
 }
 
 
 .description p{
-	max-width: 1290px;
-	line-height: 1.8;
-	font-family: 'Sans 3';
-	font-size: 19px;
+    max-width: 1290px;
+    line-height: 1.8;
+    font-family: 'Sans 3';
+    font-size: 19px;
 }
 
 .map{
-	margin-top: 50px;
+    margin-top: 50px;
 }
 
 
 .map h2{
-	margin-bottom: 20px;
-	font-family: 'Montserrat';
-	font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat';
+    font-size: 32px;
 }
 
 .map-container{
-	width: 100%;
-	height: 614px; /*Временно*/
-	background-color: rgb(0,150,80);
+    width: 100%;
+    height: 614px;
+    background-color: rgb(0,150,80);
 }
 
 
@@ -197,24 +197,115 @@
 
 
 .modal-photo {
-  	position: fixed;
-  	inset: 0;
-  	width: 100vw;
-  	height: 100vh;
-  	background-color: rgba(0, 0, 0, 0.6);
-  	z-index: 110;
-  	display: flex;
-  	justify-content: center;
-  	align-items: center;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 110;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-photo.hidden {
-  	display: none;
+    display: none;
 }
 
 .photo-modal-content {
-  	width: 100%;
-  	height: 100%;
-  	overflow: auto;
-  	background-color: transparent;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: transparent;
+}
+
+
+
+
+@media (max-width: 992px) {
+    .main-img,
+    .image-button {
+        height: 400px;
+        width: 100%;
+    }
+
+    .main-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .value,
+    .info_an {
+        width: 100%;
+    }
+
+    .name-value {
+        height: auto;
+        padding: 18px;
+    }
+
+    .hidden_button {
+        width: 100%;
+    }
+
+    .dollar-uah-share {
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .tags {
+        width: 100%;
+    }
+
+    .description p {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-img,
+    .image-button {
+        height: 260px;
+    }
+
+    .value-price {
+        font-size: 26px;
+    }
+
+    .elements {
+        padding: 18px 0 25px 18px;
+    }
+
+    .fav-n_share {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .shbutt {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .an-dis-rooms {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .an-dis-rooms li {
+        padding: 0 18px;
+    }
+
+    .potential-offer {
+        font-size: 20px;
+    }
+
+    .price-difference {
+        font-size: 17px;
+    }
+
+    .description p {
+        font-size: 16px;
+    }
 }
