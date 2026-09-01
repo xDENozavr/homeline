@@ -19,7 +19,7 @@ db.sqlite3
 db.sqlite3-journal
 
 # --- Media and static files (generated, not source) ---
-media/
+/media/
 staticfiles/
 static_root/
 
