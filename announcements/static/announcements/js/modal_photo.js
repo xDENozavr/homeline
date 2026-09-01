@@ -15,7 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
           modalContainer.classList.remove("hidden");
 
           setupModalButtons();
-          initShowButtons(modalContent);
+
+          // initShowButtons is defined globally in phone_and_link.js
+          // — it needs to be re-run here since buttons inserted via
+          // innerHTML don't get their click listeners automatically.
+          if (typeof initShowButtons === "function") {
+            initShowButtons(modalContent);
+          }
 
           const mainImg = modalContent.querySelector(".announcement_main_img");
           const thumbImgs = modalContent.querySelectorAll(".sec_but img");
@@ -57,21 +63,4 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Back button not found inside modalContent");
     }
   }
-
-  // Shows the phone number / listing link when the corresponding
-  // button is clicked, replacing the button's own content with the
-  // real <a> tag (built server-side into data-replace). Takes a
-  // "root" element so it can be called both for content already on
-  // the page and for content inserted later via AJAX (the modal).
-  function initShowButtons(root = document) {
-    const buttons = root.querySelectorAll(".show-button");
-    buttons.forEach(button => {
-      button.addEventListener("click", function () {
-        const replaceContent = this.getAttribute("data-replace");
-        this.innerHTML = replaceContent;
-        this.disabled = true;
-      });
-    });
-  }
-
 });

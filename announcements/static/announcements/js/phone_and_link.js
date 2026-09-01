@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.show-button').forEach(btn => {
+function initShowButtons(root = document) {
+  root.querySelectorAll('.show-button').forEach(btn => {
     const label = btn.querySelector('.show-button__label');
     const anId  = btn.dataset.anId;
     const url   = btn.dataset.replaceUrl;
@@ -14,22 +14,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       fetch(`${url}?an_id=${anId}`, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
-        credentials: 'same-origin'
+        credentials: 'same-origin',
+        redirect: 'manual'
       })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .then(res => {
+        if (res.type === 'opaqueredirect') {
+          return Promise.reject('unauthorized');
+        }
+        return res.ok ? res.json() : Promise.reject(res.status);
+      })
       .then(data => {
-        label.textContent       = data.phone;
-        btn.dataset.phone       = data.phone;
-        btn.dataset.loaded      = 'true';
+        label.textContent  = data.phone;
+        btn.dataset.phone  = data.phone;
+        btn.dataset.loaded = 'true';
       })
       .catch(err => {
-        console.error(err);
-        label.textContent = 'Error';
+        if (err === 'unauthorized' || err === 401 || err === 403) {
+          label.textContent = 'Sign in to view phone number';
+        } else {
+          console.error(err);
+          label.textContent = 'Something went wrong';
+        }
       });
     });
   });
 
-  document.querySelectorAll('.show-button_link').forEach(btn => {
+  root.querySelectorAll('.show-button_link').forEach(btn => {
     const label = btn.querySelector('.show-button_link__label');
     const link  = btn.dataset.annLink;
 
@@ -43,4 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.dataset.clicked = 'true';
     });
   });
-});
+}
+
+document.addEventListener('DOMContentLoaded', () => initShowButtons(document));

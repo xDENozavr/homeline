@@ -88,10 +88,14 @@
                          </ul>
                       </li>
                       <li class="hidden_button">
-                        <button class="show-button" type="button" data-replace="<a href='tel:{{ an.phone }}' style='color: black; width: 100%; height: 100%; text-align: center; line-height: 60px; display: block;'>{{ an.phone }}</a>" aria-label="Display button">Show phone number</button>
+                        <button class="show-button" type="button" data-replace-url="{% url 'get_phone' %}" data-an-id="{{ an.id }}" aria-label="Show phone number">
+                          <span class="show-button__label">Show phone number</span>
+                        </button>
                       </li>
                       <li class="hidden_button">
-                        <button class="show-button" type="button" data-replace='<a href="{{ an.link }}" target="_blank" style="color: black; width: 100%; height: 100%; text-align: center; line-height: 60px; display: block;">View listing</a>' aria-label="Display button">Show listing</button>
+                        <button class="show-button_link" type="button" data-ann-link="{{ an.link }}" aria-label="Show listing">
+                          <span class="show-button_link__label">Show listing</span>
+                        </button>
                       </li>
                    </ul>
                 </div>
